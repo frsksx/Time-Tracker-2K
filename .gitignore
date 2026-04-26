@@ -1,0 +1,11 @@
+bin/
+obj/
+
+installer/out/
+installer/payload/
+installer/*.sed
+
+*.user
+*.suo
+*.tmp
+*.bak

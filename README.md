@@ -92,6 +92,18 @@ The project publishes a self-contained single-file `win-x64` executable, so the 
 
 ## Setup
 
+Download the latest version 1 setup from:
+
+```text
+https://github.com/frsksx/Time-Tracker-2K/releases/download/v1.0.0/TimeTracker2KSetup.exe
+```
+
+Version `v1.0.0` setup SHA-256:
+
+```text
+FFF40BC7506436FD1F6551C656CCF5C702DF518528F1D43138E75B1AEFF6C295
+```
+
 Create the per-user setup executable with:
 
 ```powershell

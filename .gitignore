@@ -1,8 +1,10 @@
 bin/
 obj/
+.tools/
 
 installer/out/
 installer/payload/
+installer/portable-payload/
 installer/*.sed
 
 *.user

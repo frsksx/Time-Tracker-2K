@@ -92,7 +92,9 @@ The project publishes a self-contained single-file `win-x64` executable, so the 
 
 ## Setup
 
-Download the latest version 1 setup from:
+For company systems, prefer the MSI or portable ZIP release assets. They avoid the self-extracting setup wrapper and do not bundle PowerShell install actions.
+
+Legacy self-extracting setup:
 
 ```text
 https://github.com/frsksx/Time-Tracker-2K/releases/download/v1.0.0/TimeTracker2KSetup.exe
@@ -104,10 +106,34 @@ Version `v1.0.0` setup SHA-256:
 FFF40BC7506436FD1F6551C656CCF5C702DF518528F1D43138E75B1AEFF6C295
 ```
 
+MSI:
+
+```text
+https://github.com/frsksx/Time-Tracker-2K/releases/download/v1.0.0/TimeTracker2K-1.0.0.msi
+```
+
+Portable ZIP:
+
+```text
+https://github.com/frsksx/Time-Tracker-2K/releases/download/v1.0.0/TimeTracker2K-v1.0.0-portable.zip
+```
+
 Create the per-user setup executable with:
 
 ```powershell
 .\installer\build-setup.cmd
+```
+
+Create the MSI with:
+
+```powershell
+.\installer\build-msi.cmd
+```
+
+Create the portable ZIP with:
+
+```powershell
+.\installer\build-portable-zip.cmd
 ```
 
 The setup executable is written to:

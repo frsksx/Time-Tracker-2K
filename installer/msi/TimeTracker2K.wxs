@@ -1,0 +1,47 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package
+    Name="Time Tracker 2K"
+    Manufacturer="frsksx"
+    Version="1.0.0"
+    UpgradeCode="941ec57f-351d-4dee-acf7-ddfe1de2e748"
+    Scope="perUser">
+
+    <SummaryInformation Description="Time Tracker 2K installer" Manufacturer="frsksx" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Time Tracker 2K is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Id="LocalProgramsFolder" Name="Programs">
+        <Directory Id="INSTALLFOLDER" Name="TimeTracker2K" />
+      </Directory>
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ApplicationProgramsFolder" Name="Time Tracker 2K" />
+    </StandardDirectory>
+
+    <Feature Id="MainFeature" Title="Time Tracker 2K" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+
+    <ComponentGroup Id="ProductComponents">
+      <Component Id="MainExecutable" Directory="INSTALLFOLDER" Guid="32650e31-8ae2-440e-97c7-4982f8328bed">
+        <File Id="TimeTracker2KExe" Source="$(var.PublishDir)\TimeTracker2K.exe" />
+        <RemoveFolder Id="RemoveInstallFolder" Directory="INSTALLFOLDER" On="uninstall" />
+        <RemoveFolder Id="RemoveLocalProgramsFolder" Directory="LocalProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\frsksx\TimeTracker2K" Name="InstallPath" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
+      </Component>
+
+      <Component Id="StartMenuFolder" Directory="ApplicationProgramsFolder" Guid="d61deb13-dc9b-4021-bae8-117e7b2a7f57">
+        <Shortcut
+          Id="StartMenuShortcut"
+          Name="Time Tracker 2K"
+          Description="Open Time Tracker 2K"
+          Target="[INSTALLFOLDER]TimeTracker2K.exe"
+          WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\frsksx\TimeTracker2K" Name="StartMenuShortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Package>
+</Wix>
